@@ -30,7 +30,7 @@ async function start() {
     //setup GLB / GLTF loader
     const loader = new GLTFLoader().setPath('./media/models');
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath( '../node_modules/three/examples/jsm/libs/draco/' );
+    dracoLoader.setDecoderPath( '../../node_modules/three/examples/jsm/libs/draco/' );
     loader.setDRACOLoader( dracoLoader );
 
     //Scene setup
