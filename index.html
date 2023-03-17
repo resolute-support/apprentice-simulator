@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Apprentice virtual simulator</title>
+		<script src="./node_modules/three/examples/jsm/libs/ammo.wasm.js"></script>
+        <script type="importmap">
+			{
+					"imports": {
+							"three": "./node_modules/three/build/three.module.js",
+							"OrbitControls": "./node_modules/three/examples/jsm/controls/OrbitControls.js",
+							"GLTFLoader": "./node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+							"DRACOLoader":"./node_modules/three/examples/jsm/loaders/DRACOLoader.js",
+							"RGBELoader":"./node_modules/three/examples/jsm/loaders/RGBELoader.js",
+							"Stats":"./node_modules/three/examples/jsm/libs/stats.module.js",
+							"three/addons/": "./node_modules/three/examples/jsm/"
+					}
+			}
+	    </script>
+        <link rel="stylesheet" href="./css/master.css">
+    </head>
+    <body>
+		<div id="loadingscreen">
+			
+		</div>
+        <div style="display: none;" id="sim"></div>
+    </body>
+    <script type="module" src="./js/main.js"></script>
+</html>
