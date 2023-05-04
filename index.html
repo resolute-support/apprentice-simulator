@@ -24,7 +24,7 @@
     <body>
 		<div align="center" id="loadingscreen">
 			<lottie-player id="loadinganimation" speed="1.5" src="./media/lotties/loadingIcon.json"  background="transparent"  speed="1"  style="height: 30%; margin:0;"  loop  autoplay></lottie-player>
-			<h3>Apprentice Simulator</h3>
+			<h3 style="margin-bottom: 0;">Apprentice Simulator</h3>
 			<br>
 			<div align="left" id="myProgress">
 				<div id="myBar"></div>
@@ -44,18 +44,18 @@
 			</table>
 		</div>
 		<div id="envSelect">
-			<button id="envToggleBtn" style="margin:2px;height:40px;width:40px;" class="buttons">||||</button>
+			<button id="envToggleBtn" style="margin:2px;height:40px;width:40px;border-radius:8px;" class="buttons">||||</button>
 			<div style="display:none;" id="envOps">
-				<button style="margin:2px;" id="envBlankBtn" class="buttons buttons-active">B</button>
-				<button style="margin:2px;" id="envLineBtn" class="buttons">L</button>
-				<button style="margin:2px;" id="envObstacleBtn" class="buttons">O</button>
-				<button style="margin:2px;" id="envComboBtn" class="buttons">C</button>
+				<button style="margin:2px;width:100%;" id="envBlankBtn" class="buttons buttons-active">Blank</button>
+				<button style="margin:2px;width:100%;" id="envLineBtn" class="buttons">Line</button>
+				<button style="margin:2px;width:100%;" id="envObstacleBtn" class="buttons">Obstacle</button>
+				<button style="margin:2px;width:100%;" id="envComboBtn" class="buttons">Combo</button>
 			</div>
 		</div>
 		<div id="button-section">
 			<img src="./media/img/front_cam.svg" id="frontCamBtn" class="buttons"></img>
-			<img src="./media/img/overhead_cam.svg" id="overHeadCamBtn" class="buttons"></img>
-			<img src="./media/img/top_down_cam.svg" id="shoulderCamBtn" class="buttons"></img>
+			<img src="./media/img/top_down_cam.svg" id="overHeadCamBtn" class="buttons"></img>
+			<img src="./media/img/overhead_cam.svg" id="shoulderCamBtn" class="buttons"></img>
 			<img src="./media/img/third_person_cam.svg" id="orbitCamBtn" class="buttons"></img>
 			<img style="background-color: transparent;" src="./media/img/icons8-binary-code-67.png" id="telemBtn" class="buttons"></img>
 		</div>

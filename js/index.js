@@ -296,32 +296,39 @@ function getSensorData() {
     
     //ARROW HELPERS
     if(!debug) return;
-    
-    apprenticeCHildren.inputs.ultrasonicSensor.getWorldPosition(arrowHelper1.position)          //ultrasonic
-    arrowHelper1.rotation.z = -(ApprenticeBot.rotation.y)
-
+    apprenticeCHildren.inputs.ultrasonicSensor.getWorldPosition(arrowHelper1.position)
     apprenticeCHildren.inputs.rightObstacleSensor.getWorldPosition(arrowHelper3.position)
     apprenticeCHildren.inputs.leftObstacleSensor.getWorldPosition(arrowHelper2.position)
-
-    //arrowHelper2.rotation.z = -(ApprenticeBot.rotation.y + 0.7)
-    //arrowHelper3.rotation.z = -(ApprenticeBot.rotation.y - 0.7)
+    arrowHelper1.rotation.z = -(ApprenticeBot.rotation.y)
+    arrowHelper2.setDirection(new THREE.Vector3(Math.sin(ApprenticeBot.rotation.y + 0.7),0,Math.cos(ApprenticeBot.rotation.y + 0.7)).normalize());
+    arrowHelper3.setDirection(new THREE.Vector3(Math.sin(ApprenticeBot.rotation.y - 0.7),0,Math.cos(ApprenticeBot.rotation.y - 0.7)).normalize());
 }
 
 function obstacleReading(side) {
-    return "-"
+     let intersects
+    if (side == "right") {
+        rightObstacleRay.set(rightObsPos, new THREE.Vector3(Math.sin(ApprenticeBot.rotation.y + 0.7),0,Math.cos(ApprenticeBot.rotation.y + 0.7)));
+        intersects = rightObstacleRay.intersectObjects(scene.children)
+    }
+    if (side == "left") {
+        leftObstacleRay.set(leftObsPos, new THREE.Vector3(Math.sin(ApprenticeBot.rotation.y - 0.7),0,Math.cos(ApprenticeBot.rotation.y - 0.7)));
+        intersects = leftObstacleRay.intersectObjects(scene.children)
+    }
+    if (!intersects[0]) return false
+    return intersects[0].distance < 0.1
 }
 
 function lineReading(side) {
-    let Intersects
+    let intersects
     if (side == "right") {
         rightLineRay.set(rightLSPos, new THREE.Vector3(0,-1,0));
-        Intersects = rightLineRay.intersectObjects(scene.children)
+        intersects = rightLineRay.intersectObjects(scene.children)
     }
     else if (side == "left") {
         leftLineRay.set(leftLSPos, new THREE.Vector3(0,-1,0));
-        Intersects = leftLineRay.intersectObjects(scene.children)
+        intersects = leftLineRay.intersectObjects(scene.children)
     }
-    let rgb = Intersects[0].object.material.color
+    let rgb = intersects[0].object.material.color
     let val = (rgb.r+rgb.g+rgb.b)/3
     return (val == 1)
 }
