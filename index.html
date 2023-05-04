@@ -1,8 +1,65 @@
 <html>
     <head>
-        <title>Redirect</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <title>Apprentice virtual simulator</title>
+		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<script src="../node_modules/three/examples/jsm/libs/ammo.wasm.js"></script>
+        <script type="importmap">
+			{
+					"imports": {
+							"three": "../node_modules/three/build/three.module.js",
+							"OrbitControls": "../node_modules/three/examples/jsm/controls/OrbitControls.js",
+							"GLTFLoader": "../node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+							"DRACOLoader":"../node_modules/three/examples/jsm/loaders/DRACOLoader.js",
+							"RGBELoader":"../node_modules/three/examples/jsm/loaders/RGBELoader.js",
+							"Stats":"../node_modules/three/examples/jsm/libs/stats.module.js",
+							"three/addons/": "../node_modules/three/examples/jsm/"
+					}
+			}
+	    </script>
+        <link rel="stylesheet" href="./css/master.css">
     </head>
     <body>
-        <script>window.location.replace("./src")</script>
+		<div align="center" id="loadingscreen">
+			<lottie-player id="loadinganimation" speed="1.5" src="./media/lotties/loadingIcon.json"  background="transparent"  speed="1"  style="height: 30%; margin:0;"  loop  autoplay></lottie-player>
+			<h3>Apprentice Simulator</h3>
+			<br>
+			<div align="left" id="myProgress">
+				<div id="myBar"></div>
+			</div>
+			<br>
+			<p style="color:blue;" id="loadProgress">1%</p>
+		</div>
+		<div id="data-section">
+			<table style="font-size: 8px; color:white;">
+				<tr><td>X Position:</td><td id="XsensVal"> - </td></tr>
+				<tr><td>Y Position:</td><td id="YsensVal"> - </td></tr>
+				<tr><td>Distance:</td><td id="DistancesensVal"> - </td></tr>
+				<tr><td>Left Obstacle:</td><td id="LOsensVal"> - </td></tr>
+				<tr><td>Right Obstacle:</td><td id="ROsensVal"> - </td></tr>
+				<tr><td>Left Line:</td><td id="LLsensVal"> - </td></tr>
+				<tr><td>Right Line:</td><td id="RLsensVal"> - </td></tr>
+			</table>
+		</div>
+		<div id="envSelect">
+			<button id="envToggleBtn" style="margin:2px;height:40px;width:40px;" class="buttons">||||</button>
+			<div style="display:none;" id="envOps">
+				<button style="margin:2px;" id="envBlankBtn" class="buttons buttons-active">B</button>
+				<button style="margin:2px;" id="envLineBtn" class="buttons">L</button>
+				<button style="margin:2px;" id="envObstacleBtn" class="buttons">O</button>
+				<button style="margin:2px;" id="envComboBtn" class="buttons">C</button>
+			</div>
+		</div>
+		<div id="button-section">
+			<img src="./media/img/front_cam.svg" id="frontCamBtn" class="buttons"></img>
+			<img src="./media/img/overhead_cam.svg" id="overHeadCamBtn" class="buttons"></img>
+			<img src="./media/img/top_down_cam.svg" id="shoulderCamBtn" class="buttons"></img>
+			<img src="./media/img/third_person_cam.svg" id="orbitCamBtn" class="buttons"></img>
+			<img style="background-color: transparent;" src="./media/img/icons8-binary-code-67.png" id="telemBtn" class="buttons"></img>
+		</div>
+        <div style="display: none;" id="sim"></div>
     </body>
+    <script type="module" src="./js/index.js"></script>
 </html>
